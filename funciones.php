@@ -63,7 +63,7 @@ function getUsers($usuario,$contrasenya) {
                 $siExiste = true; 
             }else{
                 //si el usuario pertenece a sysops si puede          
-                 $query ="(&(objectClass=user)(CN=abota63))";
+                 $query ="(&(objectClass=user)(CN=".$filtro_usuario."))";
                  $user_sysops = connectLDAP($query,$usuario,$contrasenya);      
                  
                  if (in_array("CN=sysops,OU=ibadia,DC=toca,DC=cat", $user_sysops[0]["memberof"])) {
