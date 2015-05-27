@@ -28,9 +28,9 @@ function getUsers($usuario,$contrasenya) {
        //consulta de grupos_______________________________
            $query  = "(&(objectClass=user)(CN=".$filtro_usuario."))";  
            $array_grupos = connectLDAP($query,$usuario,$contrasenya);  
-           print_r($array_grupos);
-           echo "<hr>";
-           print_r($array_grupos[0]['memberof']); //--> tenemos lista de grupos del usuario
+           //print_r($array_grupos);
+           //echo "<hr>";
+          // print_r($array_grupos[0]['memberof']); //--> tenemos lista de grupos del usuario
            $array_grupos_usuario = $array_grupos[0]['memberof'];
            
        //¿$grupo esta contenido en la lista de grupos del usuario?              
