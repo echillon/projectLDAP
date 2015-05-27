@@ -1,0 +1,15 @@
+ 
+# Activación re-escritura de la URL
+RewriteEngine On
+
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+
+
+# Reescribir la URL solicitada por el usuario
+#   Entrada Preinscripcion/NOMBRE/
+#   Salida  Preinscripcion/index.php?id=NOMBRE
+# $1 recoje el primer parametro
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
