@@ -50,9 +50,8 @@ function getUsers($usuario,$contrasenya) {
   */
  function verUsuarios($array_users,$filtro_usuario,$filtro_grupo,$usuario,$contrasenya) {     
  
-    
-       //consulta de grupos_______________________________
-           $query  = "(&(objectClass=user)(CN=".$filtro_grupo."))";  
+     
+       //consulta de grupos_______________________________ 
            
            //tenemos lista de grupos del usuario
            $array_grupos_usuario = $array_users[0]['memberof'];
@@ -63,7 +62,15 @@ function getUsers($usuario,$contrasenya) {
             if (in_array($encontrar, $array_grupos_usuario)) {
                 $siExiste = true; 
             }else{
-                $siExiste = false; 
+                //si el usuario pertenece a sysops si puede          
+                 $query ="(&(objectClass=user)(CN=abota63))";
+                 $user_sysops = connectLDAP($query,$usuario,$contrasenya);      
+                 
+                 if (in_array("CN=sysops,OU=ibadia,DC=toca,DC=cat", $user_sysops[0]["memberof"])) {
+                        $siExiste = true; 
+                 }else{
+                         $siExiste = false; 
+                 }
             } 
             return $siExiste;
  }
