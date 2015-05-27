@@ -20,7 +20,7 @@
                     <label>Usuario</label>
                     <input class="u-full-width" type="text" name="login">
                     <label>Contraseña</label>
-                    <input class="u-full-width" type="text" name="pass">
+                    <input class="u-full-width" type="password" name="pass">
                     <input class="button-primary" type="submit" value="MOSTRAR MIEMBROS">
                 </div>
             </div>
